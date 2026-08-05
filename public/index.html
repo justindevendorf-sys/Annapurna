@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Annapurna Tracker</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#5b8a72" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="top-bar">
+      <button class="icon-button" id="btn-speak-screen" aria-label="Read this page aloud">🔊</button>
+      <button class="icon-button" id="btn-settings" aria-label="Settings">⚙️</button>
+    </div>
+
+    <div id="pending-banner-slot"></div>
+
+    <!-- HOME -->
+    <section class="screen active" id="screen-home" data-speak="What would you like to do?">
+      <h1>Hi!</h1>
+      <div class="big-button-grid">
+        <button class="big-button" data-nav="meal">
+          <span class="pictograph">🍽️</span>
+          Log a Meal
+        </button>
+        <button class="big-button" data-nav="feeling">
+          <span class="pictograph">🙂</span>
+          How I'm Feeling
+        </button>
+        <button class="big-button" data-nav="stool">
+          <span class="pictograph">💩</span>
+          I Pooped
+        </button>
+        <button class="big-button" data-nav="week">
+          <span class="pictograph">📅</span>
+          This Week
+        </button>
+      </div>
+    </section>
+
+    <!-- MEAL -->
+    <section class="screen" id="screen-meal" data-speak="What did you eat? Tap all the pictures that match.">
+      <button class="back-button" data-nav="home">&larr; Back</button>
+      <h2>What did you eat? 🍽️</h2>
+      <div class="option-grid" id="meal-options"></div>
+      <div class="notes-row">
+        <textarea id="meal-notes" rows="3" placeholder="Anything else? (optional)"></textarea>
+        <button class="mic-button" data-mic-target="meal-notes" aria-label="Speak instead of typing">🎤</button>
+      </div>
+      <button class="primary-action" id="btn-save-meal">Save Meal</button>
+    </section>
+
+    <!-- FEELING -->
+    <section class="screen" id="screen-feeling" data-speak="How do you feel? Tap the face that matches, then tap anything you're feeling.">
+      <button class="back-button" data-nav="home">&larr; Back</button>
+      <h2>How do you feel? 🙂</h2>
+      <div class="mood-row" id="mood-options">
+        <button class="mood-button" data-mood="1">😣</button>
+        <button class="mood-button" data-mood="2">🙁</button>
+        <button class="mood-button" data-mood="3">😐</button>
+        <button class="mood-button" data-mood="4">🙂</button>
+        <button class="mood-button" data-mood="5">😄</button>
+      </div>
+      <div class="option-grid" id="symptom-options"></div>
+      <div class="notes-row">
+        <textarea id="feeling-notes" rows="3" placeholder="Anything else? (optional)"></textarea>
+        <button class="mic-button" data-mic-target="feeling-notes" aria-label="Speak instead of typing">🎤</button>
+      </div>
+      <button class="primary-action" id="btn-save-feeling">Save</button>
+    </section>
+
+    <!-- STOOL -->
+    <section class="screen" id="screen-stool" data-speak="Tap the picture that best matches.">
+      <button class="back-button" data-nav="home">&larr; Back</button>
+      <h2>I Pooped 💩</h2>
+      <div class="bristol-list" id="bristol-options"></div>
+      <div class="notes-row">
+        <textarea id="stool-notes" rows="2" placeholder="Anything else? (optional)"></textarea>
+        <button class="mic-button" data-mic-target="stool-notes" aria-label="Speak instead of typing">🎤</button>
+      </div>
+      <button class="primary-action" id="btn-save-stool">Save</button>
+    </section>
+
+    <!-- WEEK SUMMARY -->
+    <section class="screen" id="screen-week" data-speak="Here is your week so far.">
+      <button class="back-button" data-nav="home">&larr; Back</button>
+      <h2>This Week 📅</h2>
+      <div id="week-summary-content"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="screen" id="screen-settings" data-speak="Settings">
+      <button class="back-button" data-nav="home">&larr; Back</button>
+      <h2>Settings ⚙️</h2>
+      <button class="secondary-action" id="btn-toggle-contrast">Toggle High Contrast</button>
+      <button class="secondary-action" id="btn-text-bigger">Make Text Bigger</button>
+      <button class="secondary-action" id="btn-text-smaller">Make Text Smaller</button>
+      <p style="text-align:center; color:#777; font-size:15px; margin-top:24px;">
+        Weekly email reports to parents are set up by a grown-up in the server settings.
+      </p>
+    </section>
+
+    <!-- CONFIRMATION -->
+    <section class="screen" id="screen-confirmation">
+      <div class="confirmation">
+        <div class="pictograph" id="confirmation-icon">✅</div>
+        <h2 id="confirmation-text">Saved!</h2>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

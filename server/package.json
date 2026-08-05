@@ -1,0 +1,21 @@
+{
+  "name": "annapurna-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend for the Annapurna medical food/symptom tracker: stores entries and emails a weekly summary to parents.",
+  "scripts": {
+    "start": "node src/server.js",
+    "send-report-now": "node src/sendReportNow.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.14"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
